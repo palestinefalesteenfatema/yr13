@@ -41,11 +41,12 @@ image1_label = customtkinter.CTkLabel(home_page_frame, text="", image=image1 )
 image1_label.grid(row=1, column=1)
 
 #menu
-
 #classic waffle
-classic_waffle_img = customtkinter.CTkImage(menu_page_frame, light_image=Image.open("classic waffle.png"), size=(300,300))
-classic_waffle_lable = customtkinter.CTkLabel(menu_page_frame, text="", image=classic_waffle_img )
-classic_waffle_lable.grid(row=2, column=1)
+image2 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
+image2_label = customtkinter.CTkLabel(menu_page_frame, text="", image=image2 )
+image2_label.grid(row=3, column=1)
+
+
 app.mainloop()
 
 
