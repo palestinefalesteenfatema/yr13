@@ -27,7 +27,7 @@ home_page_frame = customtkinter.CTkScrollableFrame(app)
 home_page_frame.config(bg="yellow")
 #menu page frame
 menu_page_frame = customtkinter.CTkScrollableFrame(app)
-menu_page_frame.config(bg="blue")
+
 
 #navbar buttons
 home_button = customtkinter.CTkButton(app, text ="Home", command= Home).grid(row=0,column=5)
@@ -43,7 +43,7 @@ image1_label.grid(row=1, column=1)
 #menu
 #classic waffle
 image2 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image2_label = customtkinter.CTkLabel(menu_page_frame, text="", image=image2 )
+image2_label = customtkinter.CTkLabel(menu_page_frame, text="Classic waffle", image=image2 )
 image2_label.grid(row=3, column=1)
 
 
