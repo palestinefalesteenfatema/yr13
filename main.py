@@ -39,21 +39,26 @@ menu_button = customtkinter.CTkButton(app, text ="menu", command= menu_bt).grid(
 image1 = customtkinter.CTkImage(light_image=Image.open("image.png"), size=(910,500))
 image1_label = customtkinter.CTkLabel(home_page_frame, text="", image=image1 )
 image1_label.grid(row=1, column=1)
-
 #menu
+
 #classic waffle
+def classic_waffle():
+    global classic_waffle_label
+    classic_waffle_label.grid(row=3, column=3)
+classic_waffle_label = customtkinter.CTkLabel(menu_page_frame, text="Classic waffle")
 image2 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image2_label = customtkinter.CTkLabel(menu_page_frame, text="Classic waffle", image=image2 )
-image2_label.grid(row=3, column=1)
+image2_button = customtkinter.CTkButton(menu_page_frame, text="Classic waffle", image=image2, command= classic_waffle )
+image2_button.grid(row=3, column=1)
 
+#Bubble_waffle
+def bubble_waffle():                                                                                                                         app.mainloop()
+    global bubble_waffle_label
+    bubble_waffle_label.grid(row=4, column=3)
 
-app.mainloop()
-
-
-
-
-
-
+bubble_waffle_label = customtkinter.CTkLabel(menu_page_frame, text="Bubble_waffle")
+image2 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
+image2_button = customtkinter.CTkButton(menu_page_frame, text="Classic waffle", image=image2, command= bubble_waffle )
+image2_button.grid(row=4, column=1)
 
 
 
