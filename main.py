@@ -50,7 +50,7 @@ image2 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), si
 image2_button = customtkinter.CTkButton(menu_page_frame, text="Classic waffle", image=image2, command= classic_waffle )
 image2_button.grid(row=3, column=1)
 
-
+f
 
 
 app.mainloop()
