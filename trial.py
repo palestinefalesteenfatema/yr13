@@ -1,15 +1,15 @@
-import customtkinter
+import tkinter as tk
 
-class App(customtkinter.CTk):
-    def __init__(self):
-        super().__init__()
-        self.geometry("400x150")
+root = tk.Tk()
+root.geometry("400x300")
 
-        self.button = customtkinter.CTkButton(self, text="my button", command=self.button_callbck)
-        self.button.pack(padx=20, pady=20)
+# Background widget using relative positioning
+bg_label = tk.Label(root, text="Background", bg="yellow",
+                   font=("Arial", 20))
+bg_label.place(relx=0.5, rely=0.5, anchor="center")
 
-    def button_callbck(self):
-        print("button clicked")
+# Overlapping widget
+overlay_button = tk.Button(root, text="Overlay Button", bg="red", fg="white")
+overlay_button.place(relx=0.5, rely=0.5, anchor="center")
 
-app = App()
-app.mainloop()
+root.mainloop()
