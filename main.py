@@ -58,90 +58,97 @@ def classic_waffle():
     global price
     global classic_waffle_frame
     global menu_page_frame
-    classic_waffle_frame.place(relx=0.2, rely=0.2, anchor="center")
+    classic_waffle_frame.place(relx=0.5, rely=0.3, anchor="center")
     menu_page_frame.place_forget()
     price = +20.65
     print(price)
 
-classic_waffle_frame = customtkinter.CTkScrollableFrame(app, width=150, border_width=2)
+classic_waffle_frame = customtkinter.CTkScrollableFrame(app, width=650, border_width=2)
 image2 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
 image2_button = customtkinter.CTkButton(menu_page_frame, image=image2, border_width= 1 ,command= classic_waffle )
 image2_button.grid(row=3, column=1)
-choclate = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Banana")
-choclate.grid(row=0, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
-no_banana = customtkinter.CTkCheckBox(classic_waffle_frame, text= "No Banana")
-no_banana.grid(row=1, column=0, padx=20, pady=20, sticky="e", columnspan=2)
+#bananas
+banana_radio = customtkinter.StringVar()
+banana = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Banana", variable=banana_radio).grid(row=0, column=1, padx=20, pady=20, sticky="ew", columnspan=1)
+no_banana = customtkinter.CTkRadioButton(classic_waffle_frame, text= "No Banana", variable=banana_radio).grid(row=0, column=2, padx=20, pady=20, sticky="e", columnspan=1)
+#ice cream
+icecream_radio = customtkinter.StringVar()
+icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Ice cream", variable=icecream_radio).grid(row=1, column=1, padx=20, pady=20, columnspan=1)
+no_icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "No ice cream", variable=icecream_radio).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
+double_icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Double scoop", variable=icecream_radio).grid(row=1, column=3, padx=20, pady=20, columnspan=1)
+
 
 def two_dollars():
     global price
     price = +2
     print(price)
 
+Toppings_label = customtkinter.CTkLabel(classic_waffle_frame, text="Toppings").grid(row=0, column=0)
 topping1 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Maple")
-topping1.grid(row=0, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping1.grid(row=1, column=0, padx=20, pady=20, sticky="ew", columnspan=1)
 
 topping2 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Lotus Biscoff Sauce")
-topping2.grid(row=0, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping2.grid(row=2, column=0, padx=20, pady=20, sticky="ew", columnspan=1)
 
 topping3 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Strawberry")
-topping3.grid(row=1, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping3.grid(row=4, column=0, padx=20, pady=20, sticky="ew", columnspan=1)
 
 topping4 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Passion Fruit")
-topping4.grid(row=0, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping4.grid(row=5, column=0, padx=20, pady=20, sticky="ew", columnspan=1)
 
 topping5 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Chocolate Sauce ")
-topping5.grid(row=2, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping5.grid(row=6, column=0, padx=20, pady=20, sticky="ew", columnspan=1)
 
 topping6 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Peanut Butter sauce")
-topping6.grid(row=2, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping6.grid(row=7, column=0, padx=20, pady=20, sticky="ew", columnspan=1)
 
 topping7= customtkinter.CTkCheckBox(classic_waffle_frame, text= "Fruit silk Sauce")
-topping7.grid(row=3, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping7.grid(row=8, column=0, padx=20, pady=20, sticky="ew", columnspan=1)
 
 topping8 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Citrus Peel topping")
-topping8.grid(row=3, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping8.grid(row=9, column=0, padx=20, pady=20, sticky="ew", columnspan=1)
 
 topping9 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Extra Ice Cream Scoop")
-topping9.grid(row=4, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping9.grid(row=10, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping10 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Lotus Biscoff Sauce")
-topping10.grid(row=4, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping10.grid(row=11, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping11 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Pistachio topping sauce")
-topping11.grid(row=5, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping11.grid(row=12, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping12 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Almond topping sauce")
-topping12.grid(row=5, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping12.grid(row=13, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping13 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Dulce de Leche Caramel")
-topping13.grid(row=6, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping13.grid(row=14, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping14 = customtkinter.CTkCheckBox(classic_waffle_frame, text= " hazelnut spread")
-topping14.grid(row=6, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping14.grid(row=15, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping15 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Extra Banana")
-topping15.grid(row=7, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping15.grid(row=16, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping16 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Fruit silk Sauce")
-topping16.grid(row=7, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping16.grid(row=17, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping17 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Peanut Butter sauce")
-topping17.grid(row=8, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping17.grid(row=18, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping16 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "Add Lotus Biscoff crumbles ")
-topping16.grid(row=8, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping16.grid(row=19, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping16 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "chopped up Whittaker's PEANUT SLAB ")
-topping16.grid(row=9, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping16.grid(row=20, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping8 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "chopped up Whittaker's Creamy Milk ")
-topping8.grid(row=9, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping8.grid(row=21, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping8 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "chopped up Whittaker's BERRY FOREST ")
-topping8.grid(row=10, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping8.grid(row=22, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 topping8 = customtkinter.CTkCheckBox(classic_waffle_frame, text= "chopped up Whittaker's Creamy Milk")
-topping8.grid(row=10, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
+topping8.grid(row=23, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 
 
