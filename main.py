@@ -1,3 +1,5 @@
+from string import whitespace
+
 import customtkinter
 from tkinter import messagebox
 from PIL import ImageTk, Image
@@ -22,10 +24,15 @@ def Home():
     global waffle_bites_frame
     global waffle_cake_frame
     global waffle_fries_frame
-    menu_page_frame.place_forget()
+    global iced_choclate_frame
+    iced_choclate_frame.place_forget()
     classic_waffle_frame.place_forget()
     bubble_waffle_frame.place_forget()
+    waffle_bites_frame.place_forget()
+    waffle_cake_frame.place_forget()
+    waffle_fries_frame.place_forget()
     home_page_frame.place(x=1, y=1, relwidth=1, relheight=1)
+    menu_page_frame.place_forget()
 def menu_bt():
      global home_page_frame
      global menu_page_frame
@@ -34,6 +41,8 @@ def menu_bt():
      global waffle_bites_frame
      global waffle_cake_frame
      global waffle_fries_frame
+     global iced_choclate_frame
+     iced_choclate_frame.place_forget()
      classic_waffle_frame.place_forget()
      bubble_waffle_frame.place_forget()
      waffle_bites_frame.place_forget()
@@ -54,12 +63,9 @@ menu_page_frame = customtkinter.CTkScrollableFrame(app)
 home_button = customtkinter.CTkButton(app, text ="Home", command= Home).grid(row=0,column=5)
 menu_button = customtkinter.CTkButton(app, text ="menu", command= menu_bt).grid(row=0, column=6)
 
-coffee_button = customtkinter.CTkButton(app, text ="menu", command= menu_bt).grid(row=0, column=6)
-waffles_button = customtkinter.CTkButton(app, text ="menu", command= menu_bt).grid(row=0, column=6)
-cold_drinks_button = customtkinter.CTkButton(app, text ="menu", command= menu_bt).grid(row=0, column=6)
-hot_drinks_button = customtkinter.CTkButton(app, text ="menu", command= menu_bt).grid(row=0, column=6)
-lollies_button = customtkinter.CTkButton(app, text ="menu", command= menu_bt).grid(row=0, column=6)
-specials_button = customtkinter.CTkButton(app, text ="menu", command= menu_bt).grid(row=0, column=6)
+# cold_drinks_lable = customtkinter.CTkLabel(menu_page_frame, text ="cold_drinks").grid(row=0, column=6)
+# lollies_lable = customtkinter.CTkLabel(menu_page_frame, text ="lollies").grid(row=0, column=6)
+# specials_lable = customtkinter.CTkLabel(menu_page_frame, text ="specials").grid(row=0, column=6)
 
 
 
@@ -80,9 +86,10 @@ def classic_waffle():
     price = +20.65
     print(price)
 
+waffles_lable = customtkinter.CTkLabel(menu_page_frame, text ="waffles").grid(row=0, column=2)
 classic_waffle_frame = customtkinter.CTkScrollableFrame(app, width=650, border_width=2)
 image2 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image2_button = customtkinter.CTkButton(menu_page_frame, image=image2, border_width= 1 ,command= classic_waffle )
+image2_button = customtkinter.CTkButton(menu_page_frame, image=image2, border_width= 1, text="",fg_color= "white",hover_color="lightgray",command= classic_waffle )
 image2_button.grid(row=3, column=1)
 #bananas
 banana_radio = customtkinter.StringVar()
@@ -111,7 +118,7 @@ def bubble_waffle():
 
 bubble_waffle_frame = customtkinter.CTkScrollableFrame(app, width=750, border_width=2)
 image3 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image3_button = customtkinter.CTkButton(menu_page_frame, text="bubble waffle", image=image3, command= bubble_waffle )
+image3_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image3, command= bubble_waffle )
 image3_button.grid(row=3, column=2)
 #bananas
 banana_radio = customtkinter.StringVar()
@@ -141,8 +148,8 @@ def waffle_fries():
 
 waffle_fries_frame = customtkinter.CTkScrollableFrame(app, width=650, border_width=2)
 image2 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image2_button = customtkinter.CTkButton(menu_page_frame, image=image2, border_width= 1 ,command= waffle_fries )
-image2_button.grid(row=4, column=1)
+image2_button = customtkinter.CTkButton(menu_page_frame, image=image2, border_width= 1 ,text="",fg_color= "white",hover_color="lightgray",command= waffle_fries )
+image2_button.grid(row=3, column=3)
 #bananas
 banana_radio = customtkinter.StringVar()
 banana = customtkinter.CTkRadioButton(waffle_fries_frame, text= "Banana", variable=banana_radio).grid(row=0, column=1, padx=20, pady=20, sticky="ew", columnspan=1)
@@ -163,8 +170,8 @@ def waffle_bites():
     print(price)
 waffle_bites_frame = customtkinter.CTkScrollableFrame(app, width=750, border_width=2)
 image5 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image5_button = customtkinter.CTkButton(menu_page_frame, text="waffle_bites", image=image2, command= waffle_bites)
-image5_button.grid(row=4, column=2)
+image5_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= waffle_bites)
+image5_button.grid(row=4, column=1)
 
 #waffle cake
 def waffle_cake():
@@ -178,8 +185,8 @@ def waffle_cake():
 
 waffle_cake_frame = customtkinter.CTkScrollableFrame(app, width=750, border_width=2)
 image3 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image3_button = customtkinter.CTkButton(menu_page_frame, text=" Waffle cake", image=image3, command= waffle_cake )
-image3_button.grid(row=5, column=1)
+image3_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image3, command= waffle_cake )
+image3_button.grid(row=4, column=2)
 #bananas
 banana_radio = customtkinter.StringVar()
 banana = customtkinter.CTkRadioButton(waffle_cake_frame, text= "Banana", variable=banana_radio).grid(row=0, column=1, padx=20, pady=20, sticky="ew", columnspan=1)
@@ -190,14 +197,19 @@ icecream = customtkinter.CTkRadioButton(waffle_cake_frame, text= "Ice cream", va
 no_icecream2 = customtkinter.CTkRadioButton(waffle_cake_frame, text= "No ice cream", variable=icecream_radio).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
 double_icecream = customtkinter.CTkRadioButton(waffle_cake_frame, text= "Double scoop", variable=icecream_radio).grid(row=1, column=3, padx=20, pady=20, columnspan=1)
 confirm_classic = customtkinter.CTkButton(waffle_cake_frame, text= "confirm").grid(row=3, column=3, padx=20, pady=20, columnspan=1)
-#Coffee
-def coffee():
-    global coffee_label
-    coffee_label.grid(row=4, column=4)
-coffee_label = customtkinter.CTkLabel(menu_page_frame, text="Coffee")
-image7 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image7_button = customtkinter.CTkButton(menu_page_frame, text="coffee", image=image2, command= coffee )
-image7_button.grid(row=5, column=2)
+
+cold_drinks_lable = customtkinter.CTkLabel(menu_page_frame, text ="Iced Menu").grid(row=5, column=2)
+#Choclate drinks
+def iced_choclate():
+    global iced_choclate_frame
+    global menu_page_frame
+    menu_page_frame.place_forget()
+    iced_choclate_frame.place(relx=0.5, rely=0.3, anchor="center")
+
+iced_choclate_frame = customtkinter.CTkScrollableFrame(app, width=750, border_width=2)
+image9 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
+image9_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= iced_choclate )
+image9_button.grid(row=6, column=1)
 
 
 #iced lattes
@@ -206,17 +218,8 @@ def iced_lattes():
     iced_lattes_label.grid(row=3, column=3)
 iced_lattes_label = customtkinter.CTkLabel(menu_page_frame, text="iced lattes")
 image8 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image8_button = customtkinter.CTkButton(menu_page_frame, text="iced lattes", image=image2, command= iced_lattes )
-image8_button.grid(row=6, column=1)
-
-#Choclate drinks
-def choclate_drink():
-    global choclate_drink_label
-    choclate_drink_label.grid(row=3, column=3)
-choclate_drink_label = customtkinter.CTkLabel(menu_page_frame, text="Choclate drinks")
-image9 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image9_button = customtkinter.CTkButton(menu_page_frame, text="Choclate drink", image=image2, command= choclate_drink )
-image9_button.grid(row=6, column=2)
+image8_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= iced_lattes )
+image8_button.grid(row=6, column=2)
 
 #smoothies
 def smoothies():
@@ -224,8 +227,8 @@ def smoothies():
     smoothies_label.grid(row=3, column=3)
 smoothies_label = customtkinter.CTkLabel(menu_page_frame, text="smoothies")
 image10 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image10_button = customtkinter.CTkButton(menu_page_frame, text="smoothies", image=image2, command= smoothies )
-image10_button.grid(row=7, column=1)
+image10_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= smoothies )
+image10_button.grid(row=6, column=3)
 
 #slushies
 def slushies():
@@ -233,8 +236,30 @@ def slushies():
     slushies_label.grid(row=3, column=3)
 slushies_label = customtkinter.CTkLabel(menu_page_frame, text="slushies")
 image11 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image11_button = customtkinter.CTkButton(menu_page_frame, text="slushies", image=image2, command= slushies )
-image11_button.grid(row=7, column=2)
+image11_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= slushies )
+image11_button.grid(row=7, column=1)
+
+hot_drinks_lable = customtkinter.CTkLabel(menu_page_frame, text ="hot_drinks").grid(row=8, column=2)
+
+#Coffee
+def coffee():
+    global coffee_label
+    coffee_label.grid(row=4, column=4)
+coffee_label = customtkinter.CTkLabel(menu_page_frame, text="Coffee")
+image7 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
+image7_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= coffee )
+image7_button.grid(row=9, column=1)
+#hot Choclate
+
+def hot_choclate():
+    global choclate_drink_label
+    choclate_drink_label.grid(row=3, column=3)
+choclate_drink_label = customtkinter.CTkLabel(menu_page_frame, text="hot_choclate")
+image9 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
+image9_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= hot_choclate )
+image9_button.grid(row=9, column=2)
+
+
 
 
 
