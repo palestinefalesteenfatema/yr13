@@ -1,8 +1,9 @@
 from string import whitespace
 
 import customtkinter
-from tkinter import messagebox
+from tkinter import messagebox, Spinbox
 from PIL import ImageTk, Image
+
 
 price = 0
 
@@ -100,8 +101,12 @@ icecream_radio = customtkinter.StringVar()
 icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Ice cream", variable=icecream_radio).grid(row=1, column=1, padx=20, pady=20, columnspan=1)
 no_icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "No ice cream", variable=icecream_radio).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
 double_icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Double scoop", variable=icecream_radio).grid(row=1, column=3, padx=20, pady=20, columnspan=1)
-confirm_classic = customtkinter.CTkButton(classic_waffle_frame, text= "confirm").grid(row=2, column=3, padx=20, pady=20, columnspan=1)
-
+confirm_classic = customtkinter.CTkButton(classic_waffle_frame, text= "confirm").grid(row=5, column=3, padx=20, pady=20, columnspan=1)
+# number of items
+number_of_items_label = customtkinter.CTkLabel(classic_waffle_frame, text= "Number of items" )
+number_of_items_label.grid(column=2, row=3, columnspan=3)
+number_of_items = Spinbox(classic_waffle_frame, from_=1, to=1000000000,font=("Arial", 14), width=10)
+number_of_items.grid(column=2, row=4, columnspan=3)
 def two_dollars():
     global price
     price = +2
@@ -129,12 +134,16 @@ icecream_radio = customtkinter.StringVar()
 icecream = customtkinter.CTkRadioButton(bubble_waffle_frame, text= "Ice cream", variable=icecream_radio).grid(row=1, column=1, padx=20, pady=20, columnspan=1)
 no_icecream2 = customtkinter.CTkRadioButton(bubble_waffle_frame, text= "No ice cream", variable=icecream_radio).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
 double_icecream = customtkinter.CTkRadioButton(bubble_waffle_frame, text= "Double scoop", variable=icecream_radio).grid(row=1, column=3, padx=20, pady=20, columnspan=1)
-confirm_classic = customtkinter.CTkButton(bubble_waffle_frame, text= "confirm").grid(row=3, column=3, padx=20, pady=20, columnspan=1)
+confirm_classic = customtkinter.CTkButton(bubble_waffle_frame, text= "confirm").grid(row=5, column=3, padx=20, pady=20, columnspan=1)
 #type
 type_radio = customtkinter.StringVar()
 plate = customtkinter.CTkRadioButton(bubble_waffle_frame, text= "Bubble waffle on a plate ", variable=type_radio).grid(row=2, column=2, padx=20, pady=20, columnspan=1)
 cone = customtkinter.CTkRadioButton(bubble_waffle_frame, text= "Bubble waffle cone", variable=type_radio).grid(row=2, column=3, padx=20, pady=20, columnspan=1)
-
+# number of items
+number_of_items_label = customtkinter.CTkLabel(bubble_waffle_frame, text= "Number of items" )
+number_of_items_label.grid(column=2, row=3, columnspan=3)
+number_of_items = Spinbox(bubble_waffle_frame, from_=1, to=1000000000,font=("Arial", 14), width=10)
+number_of_items.grid(column=2, row=4, columnspan=3)
 # waffle fries
 def waffle_fries():
     global price
@@ -155,10 +164,15 @@ banana_radio = customtkinter.StringVar()
 banana = customtkinter.CTkRadioButton(waffle_fries_frame, text= "Banana", variable=banana_radio).grid(row=0, column=1, padx=20, pady=20, sticky="ew", columnspan=1)
 no_banana = customtkinter.CTkRadioButton(waffle_fries_frame, text= "No Banana", variable=banana_radio).grid(row=0, column=2, padx=20, pady=20, sticky="e", columnspan=1)
 #ice cream
-icecream_radio = customtkinter.StringVar()
+whiped_cream_radio = customtkinter.StringVar()
 whiped_cream = customtkinter.CTkRadioButton(waffle_fries_frame, text= "Whiped cream", variable=icecream_radio).grid(row=1, column=1, padx=20, pady=20, columnspan=1)
 no_whiped_cream = customtkinter.CTkRadioButton(waffle_fries_frame, text= "No whiped cream", variable=icecream_radio).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
-confirm_classic = customtkinter.CTkButton(waffle_fries_frame, text= "confirm").grid(row=2, column=3, padx=20, pady=20, columnspan=1)
+confirm_classic = customtkinter.CTkButton(waffle_fries_frame, text= "confirm").grid(row=5, column=3, padx=20, pady=20, columnspan=1)
+# number of items
+number_of_items_label = customtkinter.CTkLabel(waffle_fries_frame, text= "Number of items" )
+number_of_items_label.grid(column=2, row=3, columnspan=3)
+number_of_items = Spinbox(waffle_fries_frame, from_=1, to=1000000000,font=("Arial", 14), width=10)
+number_of_items.grid(column=2, row=4, columnspan=3)
 #waffle bites
 def waffle_bites():
     global waffle_bites_frame
@@ -196,39 +210,74 @@ icecream_radio = customtkinter.StringVar()
 icecream = customtkinter.CTkRadioButton(waffle_cake_frame, text= "Ice cream", variable=icecream_radio).grid(row=1, column=1, padx=20, pady=20, columnspan=1)
 no_icecream2 = customtkinter.CTkRadioButton(waffle_cake_frame, text= "No ice cream", variable=icecream_radio).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
 double_icecream = customtkinter.CTkRadioButton(waffle_cake_frame, text= "Double scoop", variable=icecream_radio).grid(row=1, column=3, padx=20, pady=20, columnspan=1)
-confirm_classic = customtkinter.CTkButton(waffle_cake_frame, text= "confirm").grid(row=3, column=3, padx=20, pady=20, columnspan=1)
+confirm_classic = customtkinter.CTkButton(waffle_cake_frame, text= "confirm").grid(row=5, column=3, padx=20, pady=20, columnspan=1)
+number_of_items_label = customtkinter.CTkLabel(waffle_fries_frame, text= "Number of items" )
+number_of_items_label.grid(column=2, row=3, columnspan=3)
+number_of_items = Spinbox(waffle_fries_frame, from_=1, to=1000000000,font=("Arial", 14), width=10)
+number_of_items.grid(column=2, row=4, columnspan=3)
+
 
 cold_drinks_lable = customtkinter.CTkLabel(menu_page_frame, text ="Iced Menu").grid(row=5, column=2)
 #Choclate drinks
 def iced_choclate():
+    global price
     global iced_choclate_frame
     global menu_page_frame
-    menu_page_frame.place_forget()
     iced_choclate_frame.place(relx=0.5, rely=0.3, anchor="center")
+    menu_page_frame.place_forget()
+    price = +20.65
+    print(price)
+
+
 
 iced_choclate_frame = customtkinter.CTkScrollableFrame(app, width=750, border_width=2)
 image9 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image9_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= iced_choclate )
+image9_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image3, command= iced_choclate)
 image9_button.grid(row=6, column=1)
+#size
+size_radio = customtkinter.StringVar()
+normal = customtkinter.CTkRadioButton(iced_choclate_frame, text= "normal", variable=banana_radio).grid(row=0, column=1, padx=20, pady=20, sticky="ew", columnspan=1)
+large = customtkinter.CTkRadioButton(iced_choclate_frame, text= "large", variable=banana_radio).grid(row=0, column=2, padx=20, pady=20, sticky="e", columnspan=1)
+#whipped cream
+hiped_cream_radio = customtkinter.StringVar()
+whiped_cream = customtkinter.CTkRadioButton(iced_choclate_frame, text= "Whiped cream", variable=icecream_radio).grid(row=1, column=1, padx=20, pady=20, columnspan=1)
+no_whiped_cream = customtkinter.CTkRadioButton(iced_choclate_frame, text= "No whiped cream", variable=icecream_radio).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
+number_of_items_label = customtkinter.CTkLabel(iced_choclate_frame, text= "Number of items" )
+number_of_items_label.grid(column=2, row=3, columnspan=3)
+number_of_items = Spinbox(iced_choclate_frame, from_=1, to=1000000000,font=("Arial", 14), width=10)
+number_of_items.grid(column=2, row=4, columnspan=3)
 
-
-#iced lattes
-def iced_lattes():
-    global iced_lattes_label
-    iced_lattes_label.grid(row=3, column=3)
-iced_lattes_label = customtkinter.CTkLabel(menu_page_frame, text="iced lattes")
-image8 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
-image8_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= iced_lattes )
-image8_button.grid(row=6, column=2)
 
 #smoothies
 def smoothies():
     global smoothies_label
-    smoothies_label.grid(row=3, column=3)
-smoothies_label = customtkinter.CTkLabel(menu_page_frame, text="smoothies")
+    smoothies_frame.place(relx=0.5, rely=0.3, anchor="center")
+smoothies_frame = customtkinter.CTkScrollableFrame(app, width=750, border_width=2)
 image10 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
 image10_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= smoothies )
 image10_button.grid(row=6, column=3)
+#flavours
+flavours_label = customtkinter.CTkLabel(smoothies_frame, text= "flavours" )
+flavours_label.grid(column=2, row=2, columnspan=3)
+flavours_radio = customtkinter.StringVar()
+banana = customtkinter.CTkRadioButton(smoothies_frame, text= "Banana", variable=flavours_radio).grid(row=3, column=1, padx=20, pady=20, columnspan=1)
+strawberry = customtkinter.CTkRadioButton(smoothies_frame, text= "strawberry", variable=flavours_radio).grid(row=3, column=2, padx=20, pady=20, columnspan=1)
+blueberry = customtkinter.CTkRadioButton(smoothies_frame, text= "blueberry", variable=flavours_radio).grid(row=3, column=3, padx=20, pady=20, columnspan=1)
+mango = customtkinter.CTkRadioButton(smoothies_frame, text= "mango", variable=flavours_radio).grid(row=4, column=1, padx=20, pady=20, columnspan=1)
+date = customtkinter.CTkRadioButton(smoothies_frame, text= "date", variable=flavours_radio).grid(row=4, column=2, padx=20, pady=20, columnspan=1)
+confirm_classic = customtkinter.CTkButton(smoothies_frame, text= "confirm").grid(row=7, column=3, padx=20, pady=20, columnspan=1)
+#size
+size_radio = customtkinter.StringVar()
+normal = customtkinter.CTkRadioButton(smoothies_frame, text= "normal", variable=banana_radio).grid(row=0, column=1, padx=20, pady=20, sticky="ew", columnspan=1)
+large = customtkinter.CTkRadioButton(smoothies_frame, text= "large", variable=banana_radio).grid(row=0, column=2, padx=20, pady=20, sticky="e", columnspan=1)
+#whipped cream
+whiped_cream_radio = customtkinter.StringVar()
+whiped_cream = customtkinter.CTkRadioButton(smoothies_frame, text= "Whiped cream", variable=icecream_radio).grid(row=1, column=1, padx=20, pady=20, columnspan=1)
+no_whiped_cream = customtkinter.CTkRadioButton(smoothies_frame, text= "No whiped cream", variable=icecream_radio).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
+number_of_items_label = customtkinter.CTkLabel(smoothies_frame, text= "Number of items" )
+number_of_items_label.grid(column=2, row=3, columnspan=3)
+number_of_items = Spinbox(smoothies_frame, from_=1, to=1000000000,font=("Arial", 14), width=10)
+number_of_items.grid(column=2, row=4, columnspan=3)
 
 #slushies
 def slushies():
