@@ -1,5 +1,5 @@
 from string import whitespace
-
+import sqlite3
 import customtkinter
 from tkinter import messagebox, Spinbox
 from PIL import ImageTk, Image
@@ -26,6 +26,8 @@ def Home():
     global waffle_cake_frame
     global waffle_fries_frame
     global iced_choclate_frame
+    global smoothies_frame
+    smoothies_frame.place_forget()
     iced_choclate_frame.place_forget()
     classic_waffle_frame.place_forget()
     bubble_waffle_frame.place_forget()
@@ -43,6 +45,8 @@ def menu_bt():
      global waffle_cake_frame
      global waffle_fries_frame
      global iced_choclate_frame
+     global smoothies_frame
+     smoothies_frame.place_forget()
      iced_choclate_frame.place_forget()
      classic_waffle_frame.place_forget()
      bubble_waffle_frame.place_forget()
@@ -52,17 +56,40 @@ def menu_bt():
      home_page_frame.place_forget()
      menu_page_frame.place(x=1, y=1, relwidth=1, relheight=1)
 
+def login_page_bt():
+    global home_page_frame
+    global menu_page_frame
+    global classic_waffle_frame
+    global bubble_waffle_frame
+    global waffle_bites_frame
+    global waffle_cake_frame
+    global waffle_fries_frame
+    global iced_choclate_frame
+    global smoothies_frame
+    smoothies_frame.place_forget()
+    iced_choclate_frame.place_forget()
+    classic_waffle_frame.place_forget()
+    bubble_waffle_frame.place_forget()
+    waffle_bites_frame.place_forget()
+    waffle_cake_frame.place_forget()
+    waffle_fries_frame.place_forget()
+    home_page_frame.place_forget()
+    login_page_frame.place(x=1, y=1, relwidth=1, relheight=1)
+
+
 #home page frame
 home_page_frame = customtkinter.CTkScrollableFrame(app)
 home_page_frame.place(x=1, y=1, relwidth=1, relheight=1)
-home_page_frame.config(bg="yellow")
 #menu page frame
 menu_page_frame = customtkinter.CTkScrollableFrame(app)
+#login page
+login_page_frame = customtkinter.CTkScrollableFrame(app)
 
 
 #navbar buttons
 home_button = customtkinter.CTkButton(app, text ="Home", command= Home).grid(row=0,column=5)
 menu_button = customtkinter.CTkButton(app, text ="menu", command= menu_bt).grid(row=0, column=6)
+login_button = customtkinter.CTkButton(app, text ="Login", command= login_page_bt).grid(row=0, column=7)
 
 # cold_drinks_lable = customtkinter.CTkLabel(menu_page_frame, text ="cold_drinks").grid(row=0, column=6)
 # lollies_lable = customtkinter.CTkLabel(menu_page_frame, text ="lollies").grid(row=0, column=6)
@@ -251,6 +278,8 @@ number_of_items.grid(column=2, row=4, columnspan=3)
 #smoothies
 def smoothies():
     global smoothies_label
+    global menu_page_frame
+    menu_page_frame.place_forget()
     smoothies_frame.place(relx=0.5, rely=0.3, anchor="center")
 smoothies_frame = customtkinter.CTkScrollableFrame(app, width=750, border_width=2)
 image10 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
@@ -275,9 +304,9 @@ whiped_cream_radio = customtkinter.StringVar()
 whiped_cream = customtkinter.CTkRadioButton(smoothies_frame, text= "Whiped cream", variable=icecream_radio).grid(row=1, column=1, padx=20, pady=20, columnspan=1)
 no_whiped_cream = customtkinter.CTkRadioButton(smoothies_frame, text= "No whiped cream", variable=icecream_radio).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
 number_of_items_label = customtkinter.CTkLabel(smoothies_frame, text= "Number of items" )
-number_of_items_label.grid(column=2, row=3, columnspan=3)
+number_of_items_label.grid(column=2, row=5, columnspan=3)
 number_of_items = Spinbox(smoothies_frame, from_=1, to=1000000000,font=("Arial", 14), width=10)
-number_of_items.grid(column=2, row=4, columnspan=3)
+number_of_items.grid(column=2, row=6, columnspan=3)
 
 #slushies
 def slushies():
@@ -307,6 +336,38 @@ choclate_drink_label = customtkinter.CTkLabel(menu_page_frame, text="hot_choclat
 image9 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), size=(200,200))
 image9_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= hot_choclate )
 image9_button.grid(row=9, column=2)
+
+#login page
+def login_bt():
+    pass
+
+
+username_label = customtkinter.CTkLabel(login_page_frame, text= "Username").grid(row=3, column=2, columnspan=3)
+username_entry = customtkinter.CTkEntry(login_page_frame).grid(row=4, column=2, columnspan=3)
+
+password_label = customtkinter.CTkLabel(login_page_frame, text= "Password").grid(row=5, column=2, columnspan=3)
+password_entry = customtkinter.CTkEntry(login_page_frame).grid(row=6, column=2, columnspan=3)
+
+login_button = customtkinter.CTkButton(login_page_frame, text= 'Login', command=login_bt).grid(row=7, column=2, columnspan=3)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
