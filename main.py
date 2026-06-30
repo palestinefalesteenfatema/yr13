@@ -84,8 +84,7 @@ home_page_frame.place(x=1, y=1, relwidth=1, relheight=1)
 menu_page_frame = customtkinter.CTkScrollableFrame(app)
 #login page
 login_page_frame = customtkinter.CTkScrollableFrame(app)
-#profile_page
-profile_page_frame = customtkinter.CTkScrollableFrame(app)
+
 
 
 #navbar buttons
@@ -338,73 +337,52 @@ image9 = customtkinter.CTkImage(light_image=Image.open("classic waffle.png"), si
 image9_button = customtkinter.CTkButton(menu_page_frame, text="",fg_color= "white",hover_color="lightgray", image=image2, command= hot_choclate )
 image9_button.grid(row=9, column=2)
 
-#login page
-def login_bt():
 
-    conn = sqlite3.connect('user_db.db')
-    cursor = conn.cursor()
+class App(customtkinter.CTk):
+    def __init__(self):
+        super().__init__()
+        customtkinter.set_appearance_mode("light")
+        customtkinter.set_default_color_theme("dark-blue")
+        # the grid and size of my page
+        self.geometry('850x500')
+        self.columnconfigure((0, 1, 2, 3, 4, 5, 6, 7, 8), weight=1, uniform='x')
+        self.rowconfigure((0, 1, 2, 3, 4, 5, 6, 7), weight=1, uniform='x')
+        self.title('Waffle cafe')
+        # login page
+        self.login_page_frame = customtkinter.CTkScrollableFrame(app)
+        self.username_label = customtkinter.CTkLabel(login_page_frame, text="Username").grid(row=3, column=2, columnspan=3)
+        self.username_entry = customtkinter.CTkEntry(login_page_frame).grid(row=4, column=2, columnspan=3)
 
+        self.password_label = customtkinter.CTkLabel(login_page_frame, text="Password").grid(row=5, column=2, columnspan=3)
+        self.password_entry = customtkinter.CTkEntry(login_page_frame).grid(row=6, column=2, columnspan=3)
 
-    username = customtkinter.CTkEntry
-    password = customtkinter.CTkEntry
-    username.get
-    password.get
+        self.login_button = customtkinter.CTkButton(login_page_frame, text='Login', command=self.login_bt).grid(row=7, column=2,columnspan=3)
 
-    cursor.execute('SELECT * FROM user WHERE username = ? AND password = ?;', (username, password))
-    user = cursor.fetchone()
-    if user:
-        show_profile(user)
-    else:
-        messagebox.showerror('Login Failed', 'Invalid username or password')
+    def login_bt(self):
+        conn = sqlite3.connect('user_db.db')
+        cursor = conn.cursor()
+        username = self.username_entry.get()
+        password = self.password_entry.get()
+        cursor.execute('SELECT * FROM user WHERE username = ? AND password = ?;', (username, password))
+        user = cursor.fetchone()
+        if user:
+            self.show_profile(user)
+        else:
+            messagebox.showerror('Login Failed', 'Invalid username or password')
+        conn.close()
 
-
-    conn.close()
-
-
-def show_profile():
-    global profile_label1
-    global user
-    global login_page_frame
-    global profile_page_frame
-    global profile_label2
-    global profile_label3
-
-    profile_page_frame.title(f'Profile of {user[0]}')
-    login_page_frame.destroy()
-    profile_label1 = customtkinter.CTkLabel(profile_page_frame, text=f'Name: {user[2]}').grid(row=9, column=9, columnspan=3)
-    profile_label2 = customtkinter.CTkLabel(profile_page_frame, text=f'Email: {user[2]}').grid(row=9, column=10, columnspan=3)
-
-
-
-
-
-
-
-
-
-username_label = customtkinter.CTkLabel(login_page_frame, text= "Username").grid(row=3, column=2, columnspan=3)
-username_entry = customtkinter.CTkEntry(login_page_frame).grid(row=4, column=2, columnspan=3)
-
-password_label = customtkinter.CTkLabel(login_page_frame, text= "Password").grid(row=5, column=2, columnspan=3)
-password_entry = customtkinter.CTkEntry(login_page_frame).grid(row=6, column=2, columnspan=3)
-
-login_button = customtkinter.CTkButton(login_page_frame, text= 'Login', command=login_bt).grid(row=7, column=2, columnspan=3)
+    def show_profile(self, user):
+        self.login_page_frame.destroy()
+        # profile_page
+        self.profile_page_frame = customtkinter.CTkScrollableFrame(app)
+        self.profile_page_frame.title(f'Profile of {user[0]}')
+        customtkinter.CTkLabel(self.profile_page_frame, text=f'Name: {user[2]}').grid(row=9, column=9)
+        customtkinter.CTkLabel(self.profile_page_frame, text=f'Email: {user[3]}').grid(row=9, column=9)
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == '__main__':
+    App()
 
 
 
@@ -726,5 +704,5 @@ topping16.grid(row=20, column=0, padx=20, pady=20, sticky="ew", columnspan=2)
 
 
 
-
+app = App()
 app.mainloop()
