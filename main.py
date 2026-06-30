@@ -84,13 +84,14 @@ home_page_frame.place(x=1, y=1, relwidth=1, relheight=1)
 menu_page_frame = customtkinter.CTkScrollableFrame(app)
 #login page
 login_page_frame = customtkinter.CTkScrollableFrame(app)
+#profile_page
+profile_page_frame = customtkinter.CTkScrollableFrame(app)
 
 
 #navbar buttons
 home_button = customtkinter.CTkButton(app, text ="Home", command= Home).grid(row=0,column=5)
 menu_button = customtkinter.CTkButton(app, text ="menu", command= menu_bt).grid(row=0, column=6)
 login_button = customtkinter.CTkButton(app, text ="Login", command= login_page_bt).grid(row=0, column=7)
-
 # cold_drinks_lable = customtkinter.CTkLabel(menu_page_frame, text ="cold_drinks").grid(row=0, column=6)
 # lollies_lable = customtkinter.CTkLabel(menu_page_frame, text ="lollies").grid(row=0, column=6)
 # specials_lable = customtkinter.CTkLabel(menu_page_frame, text ="specials").grid(row=0, column=6)
@@ -339,7 +340,46 @@ image9_button.grid(row=9, column=2)
 
 #login page
 def login_bt():
-    pass
+
+    conn = sqlite3.connect('user_db.db')
+    cursor = conn.cursor()
+
+
+    username = customtkinter.CTkEntry
+    password = customtkinter.CTkEntry
+    username.get
+    password.get
+
+    cursor.execute('SELECT * FROM user WHERE username = ? AND password = ?;', (username, password))
+    user = cursor.fetchone()
+    if user:
+        show_profile(user)
+    else:
+        messagebox.showerror('Login Failed', 'Invalid username or password')
+
+
+    conn.close()
+
+
+def show_profile():
+    global profile_label1
+    global user
+    global login_page_frame
+    global profile_page_frame
+    global profile_label2
+    global profile_label3
+
+    profile_page_frame.title(f'Profile of {user[0]}')
+    login_page_frame.destroy()
+    profile_label1 = customtkinter.CTkLabel(profile_page_frame, text=f'Name: {user[2]}').grid(row=9, column=9, columnspan=3)
+    profile_label2 = customtkinter.CTkLabel(profile_page_frame, text=f'Email: {user[2]}').grid(row=9, column=10, columnspan=3)
+
+
+
+
+
+
+
 
 
 username_label = customtkinter.CTkLabel(login_page_frame, text= "Username").grid(row=3, column=2, columnspan=3)
