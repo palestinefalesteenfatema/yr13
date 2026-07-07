@@ -738,12 +738,7 @@ import re
 from openpyxl import *
 price = 0
 
-exel_file= 'registerations.xlsx'
-if not os.path.exists(exel_file):
-    wb=Workbook()
-    ws=wb.active
-    ws.append(['Name','Email','Password'])
-    wb.save(exel_file)
+
 
 
 
@@ -1095,13 +1090,19 @@ def signup():
     if not is_valid_email(email):
         messagebox.showerror("Invalid email")
         return
+    exel_file = 'registerations.xlsx'
+    if not os.path.exists(exel_file):
+        wb = Workbook()
+        ws = wb.active
+        ws.append(['Name', 'Email', 'Password'])
+        wb.save(exel_file)
 
     wb=load_workbook(exel_file)
     ws=wb.active
     ws.append([name,email,password])
     wb.save(exel_file)
     wb.close()
-    messagebox.showinfo('Signup Succesfull')
+    messagebox.showinfo('signup Succesfull')
 
 
 
