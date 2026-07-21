@@ -723,6 +723,7 @@
 #
 #
 import os.path
+from ctypes import create_string_buffer
 # app = App()
 # app.mainloop()
 
@@ -1085,29 +1086,37 @@ def signup():
     email=email_entry.get()
     password=password_entry.get()
     if not name or not email or not password:
-        messagebox.showwarning('Empty',"please fill all fields")
         return
     if not is_valid_email(email):
         messagebox.showerror("Invalid email")
         return
-    exel_file = 'registerations.xlsx'
-    if not os.path.exists(exel_file):
+    if not os.path.exists(infobase):
         wb = Workbook()
         ws = wb.active
         ws.append(['Name', 'Email', 'Password'])
-        wb.save(exel_file)
+        wb.save(infobase)
 
-    wb=load_workbook(exel_file)
+    wb=load_workbook(infobase)
     ws=wb.active
     ws.append([name,email,password])
-    wb.save(exel_file)
+    wb.save(infobase)
     wb.close()
     messagebox.showinfo('signup Succesfull')
 
 
 
-
-
+infobase=[
+    {
+    "name": "layla",
+    "email":"22304@students.mrgs.school.nz",
+    "password":"password"
+    },
+    {
+    "name": "layla",
+    "email":"22304@students.mrgs.school.nz",
+    "password":"password"
+    }
+]
 
 #name
 name_entry = CTkEntry(login_page_frame, placeholder_text= "name", width=250).grid(column=0, row=0, columnspan=3)
