@@ -737,6 +737,9 @@ from PIL import ImageTk, Image
 from customtkinter import CTkEntry, CTkButton
 import re
 from openpyxl import *
+
+
+
 price = 0
 
 
@@ -762,6 +765,8 @@ def Home():
     global waffle_cake_frame
     global iced_choclate_frame
     global smoothies_frame
+    global confirmframe
+    confirmframe.place_forget()
     smoothies_frame.place_forget()
     iced_choclate_frame.place_forget()
     classic_waffle_frame.place_forget()
@@ -779,6 +784,8 @@ def menu_bt():
      global waffle_cake_frame
      global iced_choclate_frame
      global smoothies_frame
+     global confirmframe
+     confirmframe.place_forget()
      smoothies_frame.place_forget()
      iced_choclate_frame.place_forget()
      classic_waffle_frame.place_forget()
@@ -807,8 +814,8 @@ def login_page_bt():
     waffle_fries_frame.place_forget()
     home_page_frame.place_forget()
     login_page_frame.place(x=1, y=1, relwidth=1, relheight=1)
-def confirm():
-    pass
+
+
 
 #home page frame
 home_page_frame = customtkinter.CTkScrollableFrame(app)
@@ -829,6 +836,7 @@ login_button = customtkinter.CTkButton(app, text ="Login", command= login_page_b
 # specials_lable = customtkinter.CTkLabel(menu_page_frame, text ="specials").grid(row=0, column=6)
 
 
+confirmframe= customtkinter.CTkScrollableFrame(app)
 
 
 #slide
@@ -836,6 +844,23 @@ image1 = customtkinter.CTkImage(light_image=Image.open("image.png"), size=(910,5
 image1_label = customtkinter.CTkLabel(home_page_frame, text="", image=image1 )
 image1_label.grid(row=1, column=1)
 #menu
+def confirm():
+    global icecream_radio
+    global price
+    global confirmframe
+    global icecreamlable
+    global classic_waffle_frame
+    classic_waffle_frame.place_forget()
+    confirmframe.place(relx=0.5, rely=0.3, anchor="center")
+    if icecream_radio.get == +1 :
+        price = +2
+    else:
+        price = +0
+
+
+
+print(price)
+
 
 #classic waffle
 def classic_waffle():
@@ -857,11 +882,14 @@ banana_radio = customtkinter.StringVar()
 banana = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Banana", variable=banana_radio).grid(row=0, column=1, padx=20, pady=20, sticky="ew", columnspan=1)
 no_banana = customtkinter.CTkRadioButton(classic_waffle_frame, text= "No Banana", variable=banana_radio).grid(row=0, column=2, padx=20, pady=20, sticky="e", columnspan=1)
 #ice cream
-icecream_radio = customtkinter.StringVar()
-icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Ice cream", variable=icecream_radio).grid(row=1, column=1, padx=20, pady=20, columnspan=1)
-no_icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "No ice cream", variable=icecream_radio).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
-double_icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Double scoop", variable=icecream_radio).grid(row=1, column=3, padx=20, pady=20, columnspan=1)
-confirm_classic = customtkinter.CTkButton(classic_waffle_frame, text= "confirm").grid(row=5, column=3, padx=20, pady=20, columnspan=1)
+icecream_radio = customtkinter.IntVar()
+icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Ice cream", variable=icecream_radio, value=0).grid(row=1, column=1, padx=20, pady=20, columnspan=1)
+no_icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "No ice cream", variable=icecream_radio,value=1).grid(row=1, column=2, padx=20, pady=20, columnspan=1)
+double_icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Double scoop", variable=icecream_radio,value=2).grid(row=1, column=3, padx=20, pady=20, columnspan=1)
+confirm_classic = customtkinter.CTkButton(classic_waffle_frame, text= "confirm", command=confirm).grid(row=5, column=3, padx=20, pady=20, columnspan=1)
+icecreamlable=customtkinter.CTkLabel(confirmframe).grid(row=5, column=3, padx=20, pady=20, columnspan=1)
+icecreamlable.config(text= f"the price of your {icecream_radio} waffle is {price}")
+
 # number of items
 number_of_items_label = customtkinter.CTkLabel(classic_waffle_frame, text= "Number of items" )
 number_of_items_label.grid(column=2, row=3, columnspan=3)
