@@ -839,7 +839,7 @@ login_button = customtkinter.CTkButton(app, text ="Login", command= login_page_b
 confirmframe= customtkinter.CTkScrollableFrame(app)
 
 
-#slide
+#home pagg backround
 image1 = customtkinter.CTkImage(light_image=Image.open("image.png"), size=(910,500))
 image1_label = customtkinter.CTkLabel(home_page_frame, text="", image=image1 )
 image1_label.grid(row=1, column=1)
@@ -853,13 +853,13 @@ def confirm():
     global classic_waffle_frame
     classic_waffle_frame.place_forget()
     confirmframe.place(relx=0.5, rely=0.3, anchor="center")
-    price == [{number_of_items} * 26.5]
+    print(price)
 
 
 
 
 
-print(price)
+
 
 
 #classic waffle
@@ -869,8 +869,8 @@ def classic_waffle():
     global menu_page_frame
     classic_waffle_frame.place(relx=0.5, rely=0.3, anchor="center")
     menu_page_frame.place_forget()
-    price = +20.65
-    print(price)
+
+
 
 waffles_lable = customtkinter.CTkLabel(menu_page_frame, text ="waffles").grid(row=0, column=2)
 classic_waffle_frame = customtkinter.CTkScrollableFrame(app, width=650, border_width=2)
@@ -890,10 +890,10 @@ confirm_classic = customtkinter.CTkButton(classic_waffle_frame, text= "confirm",
 icecreamlable=customtkinter.CTkLabel(confirmframe).grid(row=5, column=3, padx=20, pady=20, columnspan=1)
 
 # number of items
-number_of_items_label = customtkinter.CTkLabel(classic_waffle_frame, text= "Number of items" )
+number_of_items_label = customtkinter.CTkLabel(classic_waffle_frame, text= "Number of items", )
 number_of_items_label.grid(column=2, row=3, columnspan=3)
 number_of_items = Spinbox(classic_waffle_frame, from_=1, to=1000000000,font=("Arial", 14), width=10)
-
+number_of_items =[price = +20.65]
 number_of_items.grid(column=2, row=4, columnspan=3)
 def two_dollars():
     global price
