@@ -846,16 +846,16 @@ image1_label.grid(row=1, column=1)
 #menu
 def confirm():
     global icecream_radio
+    global number_of_items
     global price
     global confirmframe
     global icecreamlable
     global classic_waffle_frame
     classic_waffle_frame.place_forget()
     confirmframe.place(relx=0.5, rely=0.3, anchor="center")
-    if icecream_radio.get == +1 :
-        price = +2
-    else:
-        price = +0
+    price == [{number_of_items} * 26.5]
+
+
 
 
 
@@ -888,12 +888,12 @@ no_icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "No ice c
 double_icecream = customtkinter.CTkRadioButton(classic_waffle_frame, text= "Double scoop", variable=icecream_radio,value=2).grid(row=1, column=3, padx=20, pady=20, columnspan=1)
 confirm_classic = customtkinter.CTkButton(classic_waffle_frame, text= "confirm", command=confirm).grid(row=5, column=3, padx=20, pady=20, columnspan=1)
 icecreamlable=customtkinter.CTkLabel(confirmframe).grid(row=5, column=3, padx=20, pady=20, columnspan=1)
-icecreamlable.config(text= f"the price of your {icecream_radio} waffle is {price}")
 
 # number of items
 number_of_items_label = customtkinter.CTkLabel(classic_waffle_frame, text= "Number of items" )
 number_of_items_label.grid(column=2, row=3, columnspan=3)
 number_of_items = Spinbox(classic_waffle_frame, from_=1, to=1000000000,font=("Arial", 14), width=10)
+
 number_of_items.grid(column=2, row=4, columnspan=3)
 def two_dollars():
     global price
